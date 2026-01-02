@@ -6,7 +6,7 @@ using LinearAlgebra
 #x = Symbolics.variables(:x, 1:2)
 
 # Parameters
-Ntrunc = 3
+Ntrunc = 4
 h = x[1]
 
 # Define vector field as a 2×3 matrix
@@ -49,3 +49,5 @@ for i in 1:Ntrunc-1
         end
     end
 end
+
+Ltemp
