@@ -13,8 +13,6 @@ It provides:
 
 - The list of iterated integrals indexed by words of a certain length or less
 - The list of Lie derivatives indexed by words of a certain length or less
-- A single iterated integral indexed by a given word
-- A single Lie derivative indexed by a given word
 - The Chen-Fliess series of a nonlinear system
 
 
@@ -208,7 +206,7 @@ Feel free to cite my work:
 
 ```bibtex
 @article{iperezave,
-  title={CFSjul},
+  title={ChenFliessSeries.jl},
   author={Perez Avellaneda, Ivan},
   journal={GitHub. Note: https://github.com/iperezav/ChenFliessSeries.jl},
   volume={1},

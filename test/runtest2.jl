@@ -1,6 +1,6 @@
 using Symbolics
 using LinearAlgebra
-using CFSjul
+using ChenFliessSeries
 using DifferentialEquations
 using Plots
 

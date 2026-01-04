@@ -1,6 +1,6 @@
 using Symbolics
 using LinearAlgebra
-using CFSjul
+using ChenFliessSeries
 using DifferentialEquations
 using Plots
 
@@ -26,7 +26,7 @@ L_eval_num = Symbolics.value.(substitute.(Ltemp, Ref(subs)))
 L_eval = Float64.(L_eval_num)   # column vector
 
 # ---------------------------------------------------------
-# 2. Iterated integrals (must match Python structure)
+# 2. Iterated integrals
 # ---------------------------------------------------------
 dt = 0.001
 t = 0:dt:3

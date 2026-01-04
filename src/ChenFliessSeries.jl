@@ -196,4 +196,4 @@ end
 
 
 
-end # module CFSjul
+end # module ChenFliessSeries
