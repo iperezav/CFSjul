@@ -1,3 +1,3 @@
-# CFSjul.jl
+# ChenFliessSeries.jl
 
-Documentation for CFSjul.jl
+Documentation for ChenFliessSeries.jl

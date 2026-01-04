@@ -1,18 +1,18 @@
-# The CFSjul Module
+# The ChenFliessSeries.jl Module
 
 ```@docs
-CFSjul
+ChenFliessSeries
 ```
 
 ## Module Index
 
 ```@index
-Modules = [CFSjul]
+Modules = [ChenFliessSeries]
 Order   = [:constant, :type, :function, :macro]
 ```
 ## Detailed API
 
 ```@autodocs
-Modules = [CFSjul]
+Modules = [ChenFliessSeries]
 Order   = [:constant, :type, :function, :macro]
 ```

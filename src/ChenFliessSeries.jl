@@ -1,4 +1,4 @@
-module CFSjul
+module ChenFliessSeries
 
 using Symbolics   
 using LinearAlgebra

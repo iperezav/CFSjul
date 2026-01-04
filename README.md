@@ -1,13 +1,13 @@
 <div align = "center">
-<img src="https://raw.githubusercontent.com/iperezav/CFSjul/main/assets/CFSjul_logo.png" alt="CFSjul" />
+<img src="https://raw.githubusercontent.com/iperezav/ChenFliessSeries.jl/main/assets/CFSjul_logo_2.png" alt="CFSjul" />
 
 ---
 
 </div>
 
-# CFSjul
+# ChenFliessSeries.jl
 
-CFSjul is a Julia library to simulate the output of a control system by means of the Chen-Fliess series.
+ChenFliessSeries.jl is a Julia library to simulate the output of a control system by means of the Chen-Fliess series.
 
 It provides:
 
@@ -20,17 +20,17 @@ It provides:
 
 ## Overview
 
-CFSjul is a Julia library that contains the following functions:
+ChenFliessSeries.jl is a Julia library that contains the following functions:
 
 | Function | Description |
 | ---- | --- |
-| [**iter_int**](https://github.com/iperezav/CFSjul/blob/main/src/CFSjul.jl) | A function for the numerical computation of a list of iterated integrals |
-| [**iter_lie**](https://github.com/iperezav/CFSjul/blob/main/src/CFSjul.jl) | A function for the analytical computation of a list of Lie derivatives |
-| [**single_iter_int**](https://github.com/iperezav/CFSjul/blob/main/src/CFSjul.jl) | A function for the numerical computation of a single iterated integral |
-| [**single_iter_lie**](https://github.com/iperezav/CFSjul/blob/main/src/CFSjul.jl) | A function for the analytical computation of a single Lie derivative |
-| [**chen_fliess_output**](https://github.com/iperezav/CFSjul/blob/main/src/CFSjul.jl) | A function for the analytical computation of a single Lie derivative |
+| [**iter_int**](https://github.com/iperezav/ChenFliessSeries.jl/blob/main/src/ChenFliessSeries.jl) | A function for the numerical computation of a list of iterated integrals |
+| [**iter_lie**](https://github.com/iperezav/ChenFliessSeries.jl/blob/main/src/ChenFliessSeries.jl) | A function for the analytical computation of a list of Lie derivatives |
+| [**single_iter_int**](https://github.com/iperezav/ChenFliessSeries.jl/blob/main/src/ChenFliessSeries.jl) | A function for the numerical computation of a single iterated integral |
+| [**single_iter_lie**](https://github.com/iperezav/ChenFliessSeries.jl/blob/main/src/ChenFliessSeries.jl) | A function for the analytical computation of a single Lie derivative |
+| [**chen_fliess_output**](https://github.com/iperezav/ChenFliessSeries.jl/blob/main/src/ChenFliessSeries.jl) | A function for the analytical computation of a single Lie derivative |
 
-CFSjul is used for:
+ChenFliessSeries.jl is used for:
 
 - Computation of iterated integrals
 - Computation of Lie derivatives
@@ -39,12 +39,12 @@ CFSjul is used for:
 
 
 # Installation 
-Currently, `CFSjul` is guaranteed to run on releases of Julia 1.12.3 onwards.
+Currently, `ChenFliessSeries.jl` is guaranteed to run on releases of Julia 1.12.3 onwards.
 To install the current release:
 
 ```shell
 julia> ]
-pkg> add CFSjul
+pkg> add ChenFliessSeries
 ```
 
 
@@ -55,7 +55,7 @@ pkg> add CFSjul
 # Libraries
 using Symbolics
 using LinearAlgebra
-using CFSjul
+using ChenFliessSeries
 
 # ---------------------------------------------------------
 # 1. Lie derivatives
@@ -118,7 +118,7 @@ E = iter_int(utemp, dt, Ntrunc)
 # 3. Chen–Fliess series
 # ---------------------------------------------------------
 
-y_cf = x_val[1] .+ vec(L_eval' * E)   # output h = x2
+y_cf = x_val[1] .+ vec(L_eval' * E)   # output h = x1
 ```
 
 We can compare this result with a numerical ODE solver
@@ -152,7 +152,7 @@ tspan = (0.0, 0.1)
 prob = ODEProblem(twodquad!, x0, tspan)
 sol = solve(prob, Tsit5(), saveat = t)
 
-x1_ode = sol[1, :]   # extract x₂(t), since h = x₂
+x1_ode = sol[1, :]   # extract x1(t), since h = x1
 
 
 # ---------------------------------------------------------
@@ -176,16 +176,15 @@ plot!(grid = true)
 ```
 
 
-<img src="https://raw.githubusercontent.com/iperezav/CFSjul/main/assets/Chen-Fliess-series_quadrotor.png" alt="Chen-Fliess, Ivan Perez Avellaneda" />
+<img src="https://raw.githubusercontent.com/iperezav/ChenFliessSeries.jl/main/assets/Chen-Fliess-series_quadrotor.png" alt="Chen-Fliess, Ivan Perez Avellaneda" />
 
-For more examples, see the [CFSjul demos](https://github.com/iperezav/CFSjul/tree/main/examples/)
+For more examples, see the [CFSjul demos](https://github.com/iperezav/ChenFliessSeries.jl/tree/main/examples/)
 
 
 # Resources
 
-- [**PyPi**](https://pypi.org/project/CFSpy/)
 - [**Documentation**](https://cfsjul-docs.readthedocs.io/en/latest/)
-- [**Issue tracking**](https://github.com/iperezav/CFSjul/issues)
+- [**Issue tracking**](https://github.com/iperezav/ChenFliessSeries.jl/issues)
 
 
 # Contributing
@@ -195,8 +194,8 @@ All feedback is welcome.
 
 # Asking for help
 Please reach out if you have any questions:
-1. [Github CFSjul discussions](https://github.com/iperezav/CFSjul/discussions/).
-2. [Github CFSjul issues](https://github.com/iperezav/CFSjul/issues).
+1. [Github CFSjul discussions](https://github.com/iperezav/ChenFliessSeries.jl/discussions/).
+2. [Github CFSjul issues](https://github.com/iperezav/ChenFliessSeries.jl/issues).
 
 
 # License
@@ -211,16 +210,13 @@ Feel free to cite my work:
 @article{iperezave,
   title={CFSjul},
   author={Perez Avellaneda, Ivan},
-  journal={GitHub. Note: https://github.com/iperezav/CFSjul},
+  journal={GitHub. Note: https://github.com/iperezav/ChenFliessSeries.jl},
   volume={1},
-  year={2024}
+  year={2026}
 }
 ```
 
-[issues]: https://github.com/iperezav/CFSjul/issues
-[demos]: https://github.com/iperezav/CFSjul/blob/main/examples/
+[issues]: https://github.com/iperezav/ChenFliessSeries.jl/issues
+[demos]: https://github.com/iperezav/ChenFliessSeries.jl/blob/main/examples/
 
-[downloads]: https://pepy.tech/projects/cfspy
-[py-versions]: https://pypi.org/project/cfspy/
-[pypi-latest-version]: https://pypi.org/project/cfspy/
-[license]: https://github.com/iperezav/CFSpy/blob/main/LICENSE
+[license]: https://github.com/iperezav/ChenFliessSeries.jl/blob/main/LICENSE

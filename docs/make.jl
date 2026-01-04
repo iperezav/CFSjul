@@ -1,20 +1,20 @@
 using Documenter
-using CFSjul
+using ChenFliessSeries
 
 makedocs(
-    sitename = "CFSjul Documentation",
+    sitename = "ChenFliessSeries Documentation",
     pages = [
         "Index" => "index.md",
         "An other page" => "anotherPage.md",
     ],
     format = Documenter.HTML(),
-    modules = [CFSjul]
+    modules = [ChenFliessSeries]
 )
 
 # Documenter can also automatically deploy documentation to gh-pages.
 # See "Hosting Documentation" and deploydocs() in the Documenter manual
 # for more information.
 deploydocs(
-    repo = "https://github.com/iperezav/CFSjul.git",
+    repo = "https://github.com/iperezav/ChenFliessSeries.jl.git",
     devbranch = "main"
 )
