@@ -5,7 +5,7 @@ using LinearAlgebra
 
 
 
-export iter_int, iter_lie
+export iter_int, iter_lie, chen_fliess_output, build_lie_evaluator
 
 function iter_int(utemp, dt, Ntrunc)
 
@@ -147,6 +147,53 @@ function iter_lie(h, vector_field, z, Ntrunc)
 
     return Ltemp
 end
+
+
+
+function chen_fliess_output(Ntrunc, x0, g, h, x_vec, dt, u)
+    # symbolic Lie derivatives
+    Lsym = iter_lie(h, g, x_vec, Ntrunc)
+
+    # evaluate at x0
+    subs = Dict(x_vec[i] => x0[i] for i in 1:length(x0))
+    L_eval = Float64.(Symbolics.value.(substitute.(Lsym, Ref(subs))))
+
+    # iterated integrals
+    E = iter_int(u, dt, Ntrunc)
+
+    h0_eval = Float64.(Symbolics.value.(substitute.(h, Ref(subs))))
+
+    # CF output
+    return h0_eval .+ vec(L_eval' * E)
+end
+
+
+
+
+"""
+    build_lie_evaluator(h, g, z, Ntrunc)
+
+Return a function f(x0::AbstractVector{<:Real}) -> Vector{Float64}
+that evaluates all Lie derivatives L_η h at x0 with no symbolic leftovers.
+"""
+function build_lie_evaluator(h, g, z, Ntrunc)
+    # 1. symbolic Lie derivatives
+    Lsym = iter_lie(h, g, z, Ntrunc)  # Matrix{Num}
+
+    # 2. build compiled numeric function
+    f_raw = build_function(Lsym, z; expression = Val(false))[1]
+
+    # 3. wrap to enforce Float64 vector output
+    function f(x0::AbstractVector{<:Real})
+        y = f_raw(x0)              # can be Vector or Matrix depending on Symbolics
+        y = Symbolics.value.(y)    # strip any remaining wrapper (rare after build_function)
+        y = Float64.(y)
+        return vec(y)              # 1D Vector{Float64}
+    end
+
+    return f
+end
+
 
 
 end # module CFSjul
